@@ -59,6 +59,7 @@ run() {
   local origFlags="$-"
   set +eET
   local origIFS="$IFS"
+  command="$@"
   output="$("$@" 2>&1)"
   status="$?"
   IFS=$'\n' lines=($output)
