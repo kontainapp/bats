@@ -33,6 +33,7 @@ run() {
   local origFlags="$-"
   set +eET
   local origIFS="$IFS"
+  command="$@"
   # 'output', 'status', 'lines' are global variables available to tests.
   # shellcheck disable=SC2034
   output="$("$@" 2>&1)"

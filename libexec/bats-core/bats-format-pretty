@@ -85,6 +85,12 @@ log() {
 }
 
 summary() {
+  if  [ "$failures" -eq 0 ] ; then
+    set_color 2 bold
+  else
+    set_color 1 bold
+  fi
+
   buffer '\n%d test' "$count"
   if [[ "$count" -ne 1 ]]; then
     buffer 's'
@@ -109,6 +115,7 @@ summary() {
   fi
 
   buffer '\n'
+  clear_color
 }
 
 buffer_with_truncation() {
@@ -195,7 +202,7 @@ bats_tap_stream_begin() {
   begin
   flush
 }
-  
+
 bats_tap_stream_ok() {
   index="$1"
   ((++passed))
@@ -232,4 +239,6 @@ bats_tap_stream_suite() {
 
 bats_parse_internal_extended_tap
 
+if  [ $failures -eq 0 ] ; then set_color 2 bold; else set_color 1 bold; fi
 summary
+clear_color
