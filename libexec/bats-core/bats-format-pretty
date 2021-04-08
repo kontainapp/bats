@@ -239,6 +239,6 @@ bats_tap_stream_suite() {
 
 bats_parse_internal_extended_tap
 
-if  [ $failures -eq 0 ] ; then set_color 2 bold; else set_color 1 bold; fi
+if  [ "$failures" -eq 0 ] ; then set_color 2 bold; else set_color 1 bold; fi
 summary
 clear_color
